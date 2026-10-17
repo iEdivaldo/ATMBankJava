@@ -1,9 +1,51 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.println("Olá mundo!");
+        Scanner scanner = new Scanner(System.in);
+
+        int option = 0;
+
+        do {
+            System.out.println("\n==== ATM Bank =======");
+            System.out.println("1. Create Bank Account");
+            System.out.println("2. Deposit");
+            System.out.println("3. Withdraw");
+            System.out.println("4. Transfer Money");
+            System.out.println("5. Consult the amount");
+            System.out.println("6. Exit");
+            System.out.print("Enter your choice: ");
+            if (scanner.hasNextInt()) {
+                option = scanner.nextInt();
+                switch (option) {
+                    case 1:
+                        System.out.println("Create Bank Account");
+                        break;
+                    case 2:
+                        System.out.println("Deposit Money");
+                        break;
+                    case 3:
+                        System.out.println("Withdraw Money");
+                        break;
+                    case 4:
+                        System.out.println("Transfer Money");
+                        break;
+                    case 5:
+                        System.out.println("Consult the amount");
+                        break;
+                    case 6:
+                        System.out.println("Exit");
+                        break;
+                    default:
+                        System.out.println("Invalid option");
+                        System.out.println("Try again!");
+                }
+            } else {
+                System.out.println("Invalid option");
+                scanner.next();
+            }
+
+        } while (option != 6);
+        scanner.close();
     }
 }
