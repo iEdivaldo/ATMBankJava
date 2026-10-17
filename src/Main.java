@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class Main {
+    private static long nextAccountNumber = 1000001;
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -15,11 +16,13 @@ public class Main {
             System.out.println("5. Consult the amount");
             System.out.println("6. Exit");
             System.out.print("Enter your choice: ");
+
             if (scanner.hasNextInt()) {
                 option = scanner.nextInt();
                 switch (option) {
                     case 1:
                         System.out.println("Create Bank Account");
+                        createBankAccount(scanner);
                         break;
                     case 2:
                         System.out.println("Deposit Money");
@@ -47,5 +50,30 @@ public class Main {
 
         } while (option != 6);
         scanner.close();
+    }
+
+    // Methods
+    public static BankAccount createBankAccount(Scanner scanner) {
+        System.out.println("Enter account name: ");
+        scanner.nextLine();
+
+        String accountHolder = scanner.nextLine();
+
+        if (accountHolder.isBlank()) {
+            System.out.println("Account holder cannot be empty!.");
+            return null;
+        }
+
+        String accountNumber = String.valueOf(nextAccountNumber++);
+
+        BankAccount account = new BankAccount(
+                accountNumber, accountHolder
+        );
+
+        System.out.println("Account created successfully!");
+        System.out.println("Account number: " + account.getAccountNumber());
+        System.out.println("Account holder: " + account.getAccountHolder());
+
+        return account;
     }
 }
