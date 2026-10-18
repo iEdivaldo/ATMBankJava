@@ -23,4 +23,18 @@ public class BankAccount {
     public BigDecimal getBalance() {
         return balance;
     }
+
+    public void deposit(BigDecimal amount) {
+        if (amount == null || amount.compareTo(BigDecimal.ZERO) <= 0) {
+            System.out.println("Invalid amount");
+            return;
+        }
+
+        balance = balance.add(amount);
+
+        System.out.println("Deposited " + amount + " to balance with successfully!");
+        System.out.println("Account number: " + accountNumber);
+        System.out.println("Account holder: " + accountHolder);
+        System.out.println("Balance: " + balance);
+    }
 }

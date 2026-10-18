@@ -1,3 +1,4 @@
+import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class Main {
@@ -31,6 +32,11 @@ public class Main {
                         break;
                     case 2:
                         System.out.println("Deposit Money");
+                        if (account != null) {
+                            deposit(scanner, account);
+                        } else {
+                            System.out.println("Please create a bank account first");
+                        }
                         break;
                     case 3:
                         System.out.println("Withdraw Money");
@@ -80,5 +86,19 @@ public class Main {
         System.out.println("Account holder: " + account.getAccountHolder());
 
         return account;
+    }
+
+    public static void deposit(Scanner scanner, BankAccount account) {
+        System.out.println("Enter amount to deposit: ");
+
+        if (!scanner.hasNextBigDecimal()) {
+            System.out.println("Amount cannot be negative!");
+            scanner.next();
+            return;
+        }
+
+        BigDecimal amount = scanner.nextBigDecimal();
+
+        account.deposit(amount);
     }
 }
