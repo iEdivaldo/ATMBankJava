@@ -6,6 +6,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         int option = 0;
+        BankAccount account = null;
 
         do {
             System.out.println("\n==== ATM Bank =======");
@@ -22,7 +23,11 @@ public class Main {
                 switch (option) {
                     case 1:
                         System.out.println("Create Bank Account");
-                        createBankAccount(scanner);
+                        if (account == null) {
+                            account = createBankAccount(scanner);
+                        } else {
+                            System.out.println("Account already exists");
+                        }
                         break;
                     case 2:
                         System.out.println("Deposit Money");
