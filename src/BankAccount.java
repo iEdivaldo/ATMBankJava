@@ -37,4 +37,21 @@ public class BankAccount {
         System.out.println("Account holder: " + accountHolder);
         System.out.println("Balance: " + balance);
     }
+
+    public void withdraw(BigDecimal amount) {
+        if (amount == null || amount.compareTo(BigDecimal.ZERO) <= 0) {
+            System.out.println("Invalid amount");
+            return;
+        }
+        if (balance.compareTo(amount) < 0) {
+            System.out.println("Insufficient balance");
+            return;
+        }
+
+        balance = balance.subtract(amount);
+        System.out.println("Withdrawn " + amount + " to balance with successfully!");
+        System.out.println("Account number: " + accountNumber);
+        System.out.println("Account holder: " + accountHolder);
+        System.out.println("Balance: " + balance);
+    }
 }

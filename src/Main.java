@@ -40,6 +40,11 @@ public class Main {
                         break;
                     case 3:
                         System.out.println("Withdraw Money");
+                        if (account != null) {
+                            withdraw(scanner, account);
+                        }  else {
+                            System.out.println("Please create a bank account first");
+                        }
                         break;
                     case 4:
                         System.out.println("Transfer Money");
@@ -100,5 +105,16 @@ public class Main {
         BigDecimal amount = scanner.nextBigDecimal();
 
         account.deposit(amount);
+    }
+
+    public static void withdraw(Scanner scanner, BankAccount account) {
+        System.out.println("Enter amount to withdraw: ");
+        if (!scanner.hasNextBigDecimal()) {
+            System.out.println("Amount cannot be negative!");
+            scanner.next();
+            return;
+        }
+        BigDecimal amount = scanner.nextBigDecimal();
+        account.withdraw(amount);
     }
 }
