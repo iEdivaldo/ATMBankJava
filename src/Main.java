@@ -5,7 +5,6 @@ public class Main {
     private static long nextAccountNumber = 1000001;
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
         int option = 0;
         BankAccount account = null;
 
@@ -23,7 +22,6 @@ public class Main {
                 option = scanner.nextInt();
                 switch (option) {
                     case 1:
-                        System.out.println("Create Bank Account");
                         if (account == null) {
                             account = createBankAccount(scanner);
                         } else {
@@ -31,7 +29,6 @@ public class Main {
                         }
                         break;
                     case 2:
-                        System.out.println("Deposit Money");
                         if (account != null) {
                             deposit(scanner, account);
                         } else {
@@ -39,7 +36,6 @@ public class Main {
                         }
                         break;
                     case 3:
-                        System.out.println("Withdraw Money");
                         if (account != null) {
                             withdraw(scanner, account);
                         }  else {
@@ -50,7 +46,11 @@ public class Main {
                         System.out.println("Transfer Money");
                         break;
                     case 5:
-                        System.out.println("Consult the amount");
+                        if (account != null) {
+                            detailsAmount(account);
+                        } else {
+                            System.out.println("Please create a bank account first");
+                        }
                         break;
                     case 6:
                         System.out.println("Exit");
@@ -103,18 +103,23 @@ public class Main {
         }
 
         BigDecimal amount = scanner.nextBigDecimal();
-
         account.deposit(amount);
     }
 
     public static void withdraw(Scanner scanner, BankAccount account) {
         System.out.println("Enter amount to withdraw: ");
+
         if (!scanner.hasNextBigDecimal()) {
             System.out.println("Amount cannot be negative!");
             scanner.next();
             return;
         }
+
         BigDecimal amount = scanner.nextBigDecimal();
         account.withdraw(amount);
+    }
+
+    public static void detailsAmount(BankAccount account) {
+        account.consultAmount();
     }
 }

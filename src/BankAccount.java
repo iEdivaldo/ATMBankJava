@@ -31,11 +31,7 @@ public class BankAccount {
         }
 
         balance = balance.add(amount);
-
         System.out.println("Deposited " + amount + " to balance with successfully!");
-        System.out.println("Account number: " + accountNumber);
-        System.out.println("Account holder: " + accountHolder);
-        System.out.println("Balance: " + balance);
     }
 
     public void withdraw(BigDecimal amount) {
@@ -50,8 +46,12 @@ public class BankAccount {
 
         balance = balance.subtract(amount);
         System.out.println("Withdrawn " + amount + " to balance with successfully!");
-        System.out.println("Account number: " + accountNumber);
-        System.out.println("Account holder: " + accountHolder);
+    }
+
+    public void consultAmount() {
+        System.out.println("All informations about the account");
+        System.out.println("Account Number: " + accountNumber);
+        System.out.println("Account Holder: " + accountHolder);
         System.out.println("Balance: " + balance);
     }
 }
