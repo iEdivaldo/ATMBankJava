@@ -54,4 +54,27 @@ public class BankAccount {
         System.out.println("Account Holder: " + accountHolder);
         System.out.println("Balance: " + balance);
     }
+
+    public boolean transfer(BankAccount destination, BigDecimal amount) {
+        if (destination == null || destination == this) {
+            System.out.println("Invalid destination account.");
+            return false;
+        }
+
+        if (amount == null || amount.compareTo(BigDecimal.ZERO) <= 0) {
+            System.out.println("Invalid amount");
+            return false;
+        }
+
+        if (balance.compareTo(amount) < 0) {
+            System.out.println("Insufficient balance");
+            return false;
+        }
+
+        balance = balance.subtract(amount);
+        destination.balance = destination.balance.add(amount);
+
+        System.out.println("Transferred " + amount + " to balance with successfully!");
+        return true;
+    }
 }
