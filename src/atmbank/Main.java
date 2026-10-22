@@ -1,10 +1,12 @@
+package atmbank;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-    private static long nextAccountNumber = 1000001;
+    private static long nextAccountNumber = 101;
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int option = 0;
